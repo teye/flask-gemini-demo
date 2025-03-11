@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Document Summarizer</title>
+   <style>
+     body {
+       font-family: sans-serif;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       min-height: 100vh;
+       background-color: #f4f4f4;
+     }
+     .container {
+       background-color: white;
+       padding: 30px;
+       border-radius: 8px;
+       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+       text-align: center;
+     }
+     h2 {
+       text-align: center;
+       margin-bottom: 20px;
+     }
+     input[type="text"], textarea, select {
+       width: 100%;
+       padding: 10px;
+       margin-bottom: 15px;
+       border: 1px solid #ccc;
+       border-radius: 4px;
+       box-sizing: border-box;
+     }
+     input[type=file] {
+      width: calc(100% - 20px);
+      color: #444;
+      padding: 10px;
+      margin-bottom: 15px;
+      background: #fff;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    input[type=file]::file-selector-button {
+      margin-right: 20px;
+      border: none;
+      background: #084cdf;
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: #fff;
+      cursor: pointer;
+      transition: background .2s ease-in-out;
+    }
+    input[type=file]::file-selector-button:hover {
+      background: #0d45a5;
+    }
+    
+     button {
+       background-color: #4CAF50;
+       color: white;
+       padding: 12px 20px;
+       border: none;
+       border-radius: 4px;
+       cursor: pointer;
+     }
+   </style>
+ </head>
+ <body>
+   <div class="container">
+     <h2>Document Summarizer</h2>
+     <p>Upload a document or PDF and let Gemini summarize it for you.</p>
+     <form action="/summarize" target="_blank" method="post" enctype=multipart/form-data>
+      <input type=file name=file accept="application/msword, text/plain, application/pdf">
+       <!-- <input type="text" name="doc_link" placeholder="Enter Document Link"> -->
+       <select name="model">
+         <option value="gemini-2.0-flash">Gemini 2.0 Flash</option>
+       </select>
+       <textarea name="additional_prompt" placeholder="Optional! Write your additional prompt here. For example: 'explain to me like I am five years old'"></textarea>
+       <button type="submit">Summarize</button>
+     </form>
+   </div>
+ </body>
+</html>
